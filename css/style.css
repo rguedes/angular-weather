@@ -1,7 +1,54 @@
-.forecast {
-  width: 16%;
-  display: inline-table;
+body { background:#d5d5d5;  }
+
+.header {
+  height:4rem;
+  background:url(http://www.droid-life.com/wp-content/uploads/2013/01/googlenownewyork.png)  center center;
+  background-size:cover;
+  padding:15px 0 0 15px;
+  margin:0
 }
+
+.header input {
+  border:0;
+  font-size:1.2rem;
+  border-radius:3px;
+  box-shadow:0 1px 2px #aaa;
+  padding:.75rem 1rem;
+  margin: 0;
+}
+
+.results h2 {
+  padding: 15px;
+}
+
+.forecast {
+  width: 20%;
+  display: inline-table;
+  text-align: center;
+  padding:1.5rem;
+  box-shadow:0 1px 2px #aaa;
+  background:white;
+  margin:0 1rem 1rem;
+  border-radius:3px;
+  user-select:none;
+  animation:fly-in-from-left .5s 1s ease both;
+  transform-origin:top left;
+}
+
+.forecast:nth-child(even){
+  animation-name:fly-in-from-right;
+  animation-delay:1.1s;
+ transform-origin:top right;
+}
+
+.forecast i.wi {
+  font-size: 70px
+}
+
+
+
+/** Loader **/
+
 .loader {
   position: absolute;
   background: #fff;
