@@ -179,7 +179,7 @@ WeatherApp.directive('weatherIcon', function () {
   return {
     restrict: 'E', replace: true,
     scope: {
-      cloudiness: '@'
+      code: '@'
     },
     controller: function ($scope) {
       $scope.icon = function () {
