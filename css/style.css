@@ -42,7 +42,8 @@
 }
 
 .forecast i.wi {
-  font-size: 70px
+  font-size: 70px;
+  margin-bottom: 15px;
 }
 
 
