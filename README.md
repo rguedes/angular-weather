@@ -7,9 +7,7 @@ https://jsfiddle.net/rguedes/y9o84ot3/22/
 ### Prerequisites
 
 You need git to clone the blip-weather repository.
-
-We also use a number of node.js tools to initialize and test blip-weather. You must have node.js and
-its package manager (npm) installed.
+You must have node.js and its package manager (npm) installed.
 
 ### Clone blip-weather
 
