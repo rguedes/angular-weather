@@ -9,12 +9,14 @@
     "bower": "^1.3.1",
     "http-server": "^0.6.1",
     "jasmine-core": "^2.3.4",
-    "protractor": "^2.1.0"
+    "protractor": "^2.1.0",
+    "less": "~1.5.1"
   },
   "scripts": {
     "postinstall": "bower install",
+    "build-css": "lessc css/style.less css/style.css",
 
-    "prestart": "npm install",
+    "prestart": "npm install && npm run build-css",
     "start": "http-server -a localhost -p 8000 -c-1",
 
     "pretest": "npm install",
