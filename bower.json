@@ -1,0 +1,12 @@
+{
+  "name": "blip-weather",
+  "description": "A test project to Bip",
+  "version": "0.0.1",
+  "homepage": "https://github.com/rguedes/blip-weather",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-mocks": "~1.4.0"
+  }
+}
