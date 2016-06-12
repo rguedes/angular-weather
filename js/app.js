@@ -2,7 +2,9 @@
 
 var WeatherApp = angular.module('WeatherApp', []);
 
-WeatherApp.factory('weatherServiceFactory', function($http, $templateCache) {
+WeatherApp.value('yahooUrl', "https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='%s') and u='c'&format=json");
+
+WeatherApp.factory('weatherServiceFactory', function($http, $templateCache, yahooUrl) {
   var $weather = {};
 
   $weather.showWeather = function(response) {
@@ -30,7 +32,7 @@ WeatherApp.factory('weatherServiceFactory', function($http, $templateCache) {
     $weather.showLoader = false;
   };
   $weather.getYahooUrl = function() {
-    return "https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='%s') and u='c'&format=json".replace("%s", this.city);
+    return yahooUrl.replace("%s", $weather.city);
   };
   $weather.search = function() {
     if ($weather.city == '' || $weather.city == undefined) {
@@ -39,9 +41,9 @@ WeatherApp.factory('weatherServiceFactory', function($http, $templateCache) {
       return;
     }
     $weather.showLoader = true;
-    $http.get(this.getYahooUrl(), {
+    $http.get($weather.getYahooUrl(), {
       cache: $templateCache
-    }).then(this.showWeather, this.showError);
+    }).then($weather.showWeather, $weather.showError);
   };
   $weather.city = 'Porto, PT';
   $weather.location = {};
