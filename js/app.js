@@ -56,7 +56,7 @@ WeatherApp.factory('weatherServiceFactory', ["$http", "$templateCache", "yahooUr
   return $weather;
 }]);
 
-WeatherApp.filter('temp', function($filter) {
+WeatherApp.filter('temp', ["filter", function($filter) {
   return function(input, unit) {
     if (!unit) {
       unit = 'C';
@@ -64,7 +64,7 @@ WeatherApp.filter('temp', function($filter) {
     var numberFilter = $filter('number');
     return numberFilter(input, 1) + '\u00B0' + unit;
   };
-});
+}]);
 
 WeatherApp.controller('WeatherCtrl', ["$scope", "weatherServiceFactory", "$http", "$templateCache", 
   function($scope, weatherServiceFactory, $http, $templateCache) {
