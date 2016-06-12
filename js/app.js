@@ -4,7 +4,7 @@ var WeatherApp = angular.module('WeatherApp', []);
 
 WeatherApp.value('yahooUrl', "https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='%s') and u='c'&format=json");
 
-WeatherApp.factory('weatherServiceFactory', function($http, $templateCache, yahooUrl) {
+WeatherApp.factory('weatherServiceFactory', ["$http", "$templateCache", "yahooUrl", function($http, $templateCache, yahooUrl) {
   var $weather = {};
 
   $weather.showWeather = function(response) {
@@ -54,7 +54,7 @@ WeatherApp.factory('weatherServiceFactory', function($http, $templateCache, yaho
   $weather.showLoader = false;
 
   return $weather;
-});
+}]);
 
 WeatherApp.filter('temp', function($filter) {
   return function(input, unit) {
@@ -66,9 +66,10 @@ WeatherApp.filter('temp', function($filter) {
   };
 });
 
-WeatherApp.controller('WeatherCtrl', function($scope, weatherServiceFactory, $http, $templateCache) {
-  $scope.weather = weatherServiceFactory;
-});
+WeatherApp.controller('WeatherCtrl', ["$scope", "weatherServiceFactory", "$http", "$templateCache", 
+  function($scope, weatherServiceFactory, $http, $templateCache) {
+    $scope.weather = weatherServiceFactory;
+  }]);
 
 WeatherApp.directive('weatherIcon', function() {
   return {
