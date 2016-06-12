@@ -56,7 +56,7 @@ WeatherApp.factory('weatherServiceFactory', ["$http", "$templateCache", "yahooUr
   return $weather;
 }]);
 
-WeatherApp.filter('temp', ["filter", function($filter) {
+WeatherApp.filter('temp', ["$filter", function($filter) {
   return function(input, unit) {
     if (!unit) {
       unit = 'C';
@@ -78,7 +78,7 @@ WeatherApp.directive('weatherIcon', function() {
     scope: {
       code: '@'
     },
-    controller: function($scope) {
+    controller: ["$scope", function($scope) {
       $scope.setWeatherIcon = function(condid) {
         var icon = '';
         switch (condid) {
@@ -185,7 +185,7 @@ WeatherApp.directive('weatherIcon', function() {
       $scope.icon = function() {
         return $scope.setWeatherIcon($scope.code);
       };
-    },
+    }],
     template: '<div><i class="wi {{ icon() }}"></i><div>'
   };
 });
